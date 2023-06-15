@@ -1,0 +1,82 @@
+<button mat-icon-button class="close-button" (click)="onCloseClick()">
+  <mat-icon color="warn">close</mat-icon>
+</button>
+
+<div mat-dialog-title class="dialog-title">
+  <h1 class="title-text text-center">Employee Form</h1>
+</div>
+<form [formGroup]="empForm" (ngSubmit)="onFormSubmit()">
+  <div mat-dialog-content class="flex-container">
+    <div class="flex gap-4">
+      <mat-form-field appearance="fill">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="firstName" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="lastName" />
+      </mat-form-field>
+    </div>
+
+    <div class="flex gap-4">
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Date of birth</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dob" />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <div class="flex gap-4">
+      <mat-radio-group aria-label="Select an option" formControlName="gender">
+        <mat-label><b>Gender</b></mat-label>
+        <mat-radio-button value="male">Male</mat-radio-button>
+        <mat-radio-button value="female">Female</mat-radio-button>
+        <mat-radio-button value="other">Other</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="flex gap-4">
+      <mat-form-field>
+        <mat-label>Education</mat-label>
+        <mat-select formControlName="education">
+          <mat-option *ngFor="let edu of education" [value]="edu">
+            {{ edu }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Company</mat-label>
+        <input matInput formControlName="company" />
+      </mat-form-field>
+    </div>
+
+    <div class="flex gap-4">
+      <mat-form-field appearance="fill">
+        <mat-label>Experience</mat-label>
+        <input matInput type="number" formControlName="experience" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Package</mat-label>
+        <input matInput type="number" formControlName="package" />
+        <mat-hint>In Taka</mat-hint>
+      </mat-form-field>
+    </div>
+  </div>
+  <div mat-dialog-actions class="py-5">
+    <button mat-raised-button color="primary" class="flex-1" type="submit">
+      Save
+    </button>
+  </div>
+</form>
