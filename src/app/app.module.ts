@@ -26,6 +26,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HomeComponent } from './pages/home/home.component';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatListModule } from '@angular/material/list';
+import { MatExpansionModule } from '@angular/material/expansion';
 @NgModule({
   declarations: [AppComponent, HomeComponent],
   imports: [
@@ -54,6 +57,9 @@ import { GoogleMapsModule } from '@angular/google-maps';
     MatSortModule,
     MatSnackBarModule,
     GoogleMapsModule,
+    MatToolbarModule,
+    MatListModule,
+    MatExpansionModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -15,6 +15,23 @@ export class HomeComponent {
     this.setMapDimensions();
   }
 
+  panelOpenState = false;
+
+  items: string[] = [
+    'তুরাগ',
+    'গ্রীন অনাবিল',
+    'ভিক্টর ক্লাসিক',
+    'প্রজাপতি',
+    'মধুমতি',
+    'বি আর টি সি',
+    'বসুমতি',
+    'শান্তি পরিবহন',
+    'পরিস্থান',
+    'কেয়ারি সিন্দাবাদ',
+    'ভি আই পি',
+    'উপকূল',
+  ];
+
   @HostListener('window:resize')
   onWindowResize() {
     this.setMapDimensions();
