@@ -10,4 +10,5 @@ body {
   overflow: auto;
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: rgba(0, 0, 0, 0.7);
 }

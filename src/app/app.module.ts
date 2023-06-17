@@ -29,6 +29,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 @NgModule({
   declarations: [AppComponent, HomeComponent],
   imports: [
@@ -60,6 +61,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatToolbarModule,
     MatListModule,
     MatExpansionModule,
+    MatAutocompleteModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

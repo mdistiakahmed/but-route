@@ -16,6 +16,10 @@
   background: rgba(0, 0, 0, 0.7);
 }
 
+.mat-expansion-panel-header {
+  height: 80px;
+}
+
 :host {
   flex-grow: 1;
 }

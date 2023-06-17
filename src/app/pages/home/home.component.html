@@ -1,25 +1,43 @@
 <div class="bg-image">
   <div class="flex flex-col items-center pt-2">
     <!-- First Row -->
-    <div class="flex justify-around gap-2">
-      <mat-form-field appearance="fill" class="w-[200px]">
+    <form class="flex justify-around gap-2">
+      <mat-form-field class="example-full-width">
         <mat-label>Start</mat-label>
-        <mat-select>
-          <mat-option> uttara </mat-option>
-          <mat-option> dhanmondi </mat-option>
-          <mat-option> mirpur </mat-option>
-        </mat-select>
+        <input
+          type="text"
+          matInput
+          [formControl]="myControl"
+          [matAutocomplete]="auto"
+        />
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+          <mat-option
+            *ngFor="let option of filteredOptions | async"
+            [value]="option"
+          >
+            {{ option.name }}
+          </mat-option>
+        </mat-autocomplete>
       </mat-form-field>
 
-      <mat-form-field appearance="fill" class="w-[200px]">
+      <mat-form-field class="example-full-width">
         <mat-label>Destination</mat-label>
-        <mat-select>
-          <mat-option> uttara </mat-option>
-          <mat-option> dhanmondi </mat-option>
-          <mat-option> mirpur </mat-option>
-        </mat-select>
+        <input
+          type="text"
+          matInput
+          [formControl]="myControl"
+          [matAutocomplete]="auto"
+        />
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+          <mat-option
+            *ngFor="let option of filteredOptions | async"
+            [value]="option"
+          >
+            {{ option.name }}
+          </mat-option>
+        </mat-autocomplete>
       </mat-form-field>
-    </div>
+    </form>
 
     <mat-accordion class="w-3/4">
       <mat-expansion-panel
@@ -27,9 +45,9 @@
         (closed)="panelOpenState = false"
       >
         <mat-expansion-panel-header>
-          <mat-panel-title> Bus List </mat-panel-title>
+          <mat-panel-title> Bus List (click to expand) </mat-panel-title>
           <mat-panel-description>
-            Click here to show all available bus
+            Click on bus name to show route on map
           </mat-panel-description>
         </mat-expansion-panel-header>
         <ul class="space-y-2 flex flex-col">
@@ -51,7 +69,7 @@
 
     <!-- Second Row -->
     <div class="w-full pt-10 flex items-center justify-center">
-      <div id="map" class="aspect-w-16 aspect-h-9 sm:h-40 md:h-56 lg:h-64">
+      <div id="map">
         <google-map
           [height]="mapHeight"
           [width]="mapWidth"
