@@ -14,7 +14,6 @@ import { MatSortModule } from '@angular/material/sort';
 import { DropdownInputComponent } from './common/dropdown-input/dropdown-input.component';
 import { ToolbarComponent } from './common/toolbar/toolbar.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import { EmpAddEditComponent } from './emp-add-edit/emp-add-edit.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -23,12 +22,12 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { TableComponent } from './common/table/table.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
+import { HomeComponent } from './pages/home/home.component';
+import { GoogleMapsModule } from '@angular/google-maps';
 @NgModule({
-  declarations: [AppComponent, EmpAddEditComponent, TableComponent],
+  declarations: [AppComponent, HomeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -54,6 +53,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatPaginatorModule,
     MatSortModule,
     MatSnackBarModule,
+    GoogleMapsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
