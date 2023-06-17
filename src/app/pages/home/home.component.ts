@@ -51,7 +51,7 @@ export class HomeComponent {
   private setMapDimensions() {
     if (window.innerWidth < 640) {
       this.mapHeight = '300px';
-      this.mapWidth = '400px';
+      this.mapWidth = '350px';
     } else if (window.innerWidth < 1024) {
       this.mapHeight = '300px';
       this.mapWidth = '500px';

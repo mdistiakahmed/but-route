@@ -1,8 +1,9 @@
 <div class="bg-image">
   <div class="flex flex-col items-center pt-2">
-    <!-- First Row -->
-    <form class="flex justify-around gap-2">
-      <mat-form-field class="example-full-width">
+    <form
+      class="w-full flex flex-col items-center my-10 gap-2 md:flex-row md:justify-around md:items-start"
+    >
+      <mat-form-field class="w-[300px]">
         <mat-label>Start</mat-label>
         <input
           type="text"
@@ -20,7 +21,7 @@
         </mat-autocomplete>
       </mat-form-field>
 
-      <mat-form-field class="example-full-width">
+      <mat-form-field class="w-[300px]">
         <mat-label>Destination</mat-label>
         <input
           type="text"
@@ -37,57 +38,79 @@
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
+
+      <div>
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          class="w-[300px] h-[200px]"
+          style="height: 50px"
+        >
+          Search
+        </button>
+      </div>
     </form>
 
-    <mat-accordion class="w-3/4">
-      <mat-expansion-panel
-        (opened)="panelOpenState = true"
-        (closed)="panelOpenState = false"
-      >
-        <mat-expansion-panel-header>
-          <mat-panel-title> Bus List (click to expand) </mat-panel-title>
-          <mat-panel-description>
-            Click on bus name to show route on map
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-        <ul class="space-y-2 flex flex-col">
-          <li
-            *ngFor="let item of items; let i = index"
-            [ngClass]="{
-              'bg-gray-200': i % 2 === 0,
-              'bg-gray-100': i % 2 !== 0
-            }"
-            class="items-center"
+    <div class="p-10 w-full flex flex-col items-center md:flex-row">
+      <div class="md:w-1/3">
+        <mat-accordion class="w-[300px]">
+          <mat-expansion-panel
+            (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false"
           >
-            <button mat-raised-button color="secondary" class="w-full">
-              {{ item }}
-            </button>
-          </li>
-        </ul>
-      </mat-expansion-panel>
-    </mat-accordion>
+            <mat-expansion-panel-header>
+              <mat-panel-description>
+                Select bus and see route in map
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <ul class="space-y-2 flex flex-col">
+              <li
+                *ngFor="let item of items; let i = index"
+                [ngClass]="{
+                  'bg-gray-200': i % 2 === 0,
+                  'bg-gray-100': i % 2 !== 0
+                }"
+                class="items-center"
+              >
+                <button mat-raised-button color="secondary" class="w-full">
+                  {{ item }}
+                </button>
+              </li>
+            </ul>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
 
-    <!-- Second Row -->
-    <div class="w-full pt-10 flex items-center justify-center">
-      <div id="map">
-        <google-map
-          [height]="mapHeight"
-          [width]="mapWidth"
-          [center]="center"
-          [zoom]="zoom"
-          (mapClick)="moveMap($event)"
-          (mapMousemove)="move($event)"
+      <div
+        class="w-full pt-10 flex flex-col items-center justify-center md:w-2/3"
+      >
+        <div id="map">
+          <google-map
+            [height]="mapHeight"
+            [width]="mapWidth"
+            [center]="center"
+            [zoom]="zoom"
+            (mapClick)="moveMap($event)"
+            (mapMousemove)="move($event)"
+          >
+            <map-polyline [path]="vertices"></map-polyline>
+          </google-map>
+        </div>
+        <div
+          class="pt-5 w-[350px] flex flex-wrap items-center space-x-2 md:w-4/5"
         >
-          <map-polyline [path]="vertices"></map-polyline>
-        </google-map>
+          <ng-container *ngFor="let item of items; let last = last">
+            <mat-icon class="text-white z-10">location_on</mat-icon>
+            <span class="z-10 text-white">{{ item }}</span>
+            <ng-container *ngIf="!last">
+              <mat-icon class="text-white z-10">arrow_right_alt</mat-icon>
+            </ng-container>
+          </ng-container>
+        </div>
       </div>
-    </div>
 
-    <!-- Third Row -->
-    <div class="flex justify-center items-center z-10">
-      <div class="p-4">
-        <p class="text-center text-white">Airport - TSC</p>
-      </div>
+      <div class="h-52"></div>
     </div>
   </div>
 </div>
